@@ -1,0 +1,244 @@
+```{r}
+#Le Expert Gas Usage
+
+library(ggplot2)
+
+# Read the data from the CSV file
+data <- read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+
+
+# Create the plot
+p = ggplot(data, aes(x = factor(NUM_EXPERTS), y = GAS_EXPERT, group = interaction(PROTOCOL, NUM_ROUNDS), color = PROTOCOL)) +
+  geom_point(size = 3, alpha = 0.7) +  # Points with size and transparency
+  geom_line(aes(linetype = as.factor(NUM_ROUNDS))) +  # Connect the dots, using linetype for MAX_ROUNDS
+  labs(title = "Gas Usage of  Exper(In Wei)",
+       x = "Number of Experts",
+       y = "Amount of Gas Used in Wei") +
+   scale_color_discrete(name = "Protocol") + 
+    scale_linetype_discrete(name = "No. of Rounds") +  
+  
+ theme(     panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    panel.background = element_blank(), panel.border = element_rect(color = "black", fill = NA) 
+  )    # Label for linetype legend
+p
+ggsave("expert_gas_used.png", plot = p, width = 10, height = 6) 
+
+``` 
+
+
+```{r}
+#Le Expert Gas Usage
+
+library(ggplot2)
+
+# Read the data from the CSV file
+data <- read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+
+
+# Create the plot
+p = ggplot(data, aes(x = factor(NUM_EXPERTS), y = GAS_MANAGER, group = interaction(PROTOCOL, NUM_ROUNDS), color = PROTOCOL)) +
+  geom_point(size = 3, alpha = 0.7) +  # Points with size and transparency
+  geom_line(aes(linetype = as.factor(NUM_ROUNDS))) +  # Connect the dots, using linetype for MAX_ROUNDS
+  labs(title = "Gas Usage of Manager (In Wei)",
+       x = "Number of Experts",
+       y = "Amount of Gas Used in Wei") +
+   scale_color_discrete(name = "Protocol") + 
+    scale_linetype_discrete(name = "No. of Rounds") +  
+ theme(     panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    panel.background = element_blank(), panel.border = element_rect(color = "black", fill = NA) 
+  )    # Label for linetype legend
+p
+ggsave("manager_gas_used.png", plot = p, width = 10, height = 6) 
+
+```
+
+
+
+```{r}
+# NEEDED
+library(ggplot2)
+
+
+data = read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+data_filtered= data
+  p <- ggplot(data_filtered, aes(x = as.factor(NUM_ROUNDS), y = HARD_ACC, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title ="Accuracy Based Weighted Hard Voting",
+         x = "Number of Rounds",
+         y = "Mean Test Accuracy") +
+                 
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +  
+    scale_shape_discrete(name = "Number of Experts") + 
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +
+    ylim(91, 95)                       # Set y-axis limits from 90 to 95
+
+
+ggsave("ACC_AccuracyBasedWeightedHardVoting.png", plot = p, width = 10, height = 6) 
+p
+```
+
+
+```{r}
+#NEEDED
+library(ggplot2)
+
+
+data = read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+data_filtered= data
+  p <- ggplot(data_filtered, aes(x = as.factor(NUM_ROUNDS), y = HARD_REPT, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title ="Reputation Based Weighted Hard Voting",
+         x = "Number of Rounds",
+         y = "Mean Test Accuracy") +
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +    
+    scale_shape_discrete(name = "Number of Experts") + 
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +
+    ylim(91, 95)                       # Set y-axis limits from 90 to 95
+
+
+ggsave("ACC_ReputationBasedWeightedHardVoting.png", plot = p, width = 10, height = 6) 
+p
+```
+
+```{r}
+#NEEDED
+library(ggplot2)
+
+
+data = read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+data_filtered= data
+  p <- ggplot(data_filtered, aes(x = as.factor(NUM_ROUNDS), y = SOFT_REPT, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title ="Reputation Based Weighted Soft Voting",
+         x = "Number of Rounds",
+         y = "Mean Test Accuracy") +
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +    
+    scale_shape_discrete(name = "Number of Experts") + 
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +
+    ylim(91, 95)                       # Set y-axis limits from 90 to 95
+
+
+ggsave("ACC_ReputationBasedWeightedSoftVoting.png", plot = p, width = 10, height = 6) 
+p
+```
+
+
+
+```{r}
+#NEEDED
+library(ggplot2)
+
+
+data = read.csv("NUM_ROUNDS_vs_ACCURACY.csv")
+data_filtered= data
+  p <- ggplot(data_filtered, aes(x = as.factor(NUM_ROUNDS), y = SOFT_ACC, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title ="Accuracy Based Weighted Soft Voting",
+         x = "Number of Rounds",
+         y = "Mean Test Accuracy") +
+                 scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +    
+    scale_shape_discrete(name = "Number of Experts") + 
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +
+    ylim(91, 95)                       # Set y-axis limits from 90 to 95
+
+
+ggsave("ACC_AccuracyBasedWeightedSoftVoting.png", plot = p, width = 10, height = 6) 
+p
+```
+
+```{r}
+  data <- read.csv("MAL_NUM_ROUNDS_vs_ACCURACY.csv")
+  p <- ggplot(data, aes(x = as.factor(PROP), y = HARD_ACC, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title = "Accuracy Based Weighted Hard Voting in Presence of Malicious Experts",
+         x = "Proportion of Malicious Experts",
+         y = "Mean Test Accuracy") +
+                 
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +    
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  )   +ylim(0,98)                     # Set y-axis limits from 90 to 95
+
+
+ 
+  p
+  ggsave("MAL_HARD_ACC.png", plot = p, width = 10, height = 6)  # You can adjust width and height as needed
+```
+
+```{r}
+  data <- read.csv("MAL_NUM_ROUNDS_vs_ACCURACY.csv")
+  p <- ggplot(data, aes(x = as.factor(PROP), y = HARD_REPT, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title = "Reputation Based Weighted Hard Voting in Presence of Malicious Experts",
+         x = "Proportion of Malicious Experts",
+         y = "Mean Test Accuracy") +
+                 
+scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +   
+    theme(
+         panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +ylim(0,98)                       # Set y-axis limits from 90 to 95
+
+
+ 
+  p
+  ggsave("MAL_HARD_REPT.png", plot = p, width = 10, height = 6)  # You can adjust width and height as needed
+```
+
+```{r}
+  data <- read.csv("MAL_NUM_ROUNDS_vs_ACCURACY.csv")
+  p <- ggplot(data, aes(x = as.factor(PROP), y = SOFT_REPT, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title = "Reputation Based Weighted Soft Voting in Presence of Malicious Experts",
+         x = "Proportion of Malicious Experts",
+         y = "Mean Test Accuracy") +
+                 
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +   
+    theme(
+       panel.grid.major = element_blank(),     panel.grid.minor = element_blank(), 
+    panel.background = element_blank(),    panel.border = element_rect(color = "black", fill = NA)  ) +ylim(70,95)                       # Set y-axis limits from 90 to 95
+
+
+ 
+  p
+  ggsave("MAL_SOFT_REPT.png", plot = p, width = 10, height = 6)  # You can adjust width and height as needed
+```
+
+```{r}
+  data <- read.csv("MAL_NUM_ROUNDS_vs_ACCURACY.csv")
+  p <- ggplot(data, aes(x = as.factor(PROP), y = SOFT_ACC, linetype = as.factor(PROTOCOL), color = as.factor(NUM_EXPERTS), group = interaction(PROTOCOL, NUM_EXPERTS))) +
+    geom_line(size = 1) +          
+    geom_point(size = 3) +          
+    labs(title = "Accuracy Based Weighted Soft Voting in Presence of Malicious Experts",
+         x = "Proportion of Malicious Experts",
+         y = "Mean Test Accuracy") +
+    scale_color_discrete(name = "No. of Experts") + 
+    scale_linetype_discrete(name = "Protocol") +  
+    theme(panel.grid.major = element_blank(),     panel.grid.minor = element_blank(),panel.background = element_blank(),panel.border = element_rect(color = "black", fill = NA)  ) +ylim(70,95)                       # Set y-axis limits from 90 to 95
+
+
+ 
+  p
+  ggsave("MAL_SOFT_ACC.png", plot = p, width = 10, height = 6)  # You can adjust width and height as needed
+```

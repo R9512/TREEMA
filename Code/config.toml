@@ -1,0 +1,30 @@
+title = "Config File For This"
+
+[BOOTSTRAP]
+NEW_KEY_GEN = false
+CONTRACT_ABI = "./sairam.json"
+
+[METADATA]
+CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+ENCRYPTION = true
+NUM_PARTIONS = 15
+TARGET = "lable"
+TEST_DATA_PATH = "./input_data/test_mnist.csv"
+TRAIN_DATA_PATH = "./input_data/train_mnist.csv"
+UNIFORM = true
+WEB3_USAGE = true
+MAX_ROUNDS = 14
+ROUND_LIMIT = 10
+
+[PROTOCOL]
+N = 15
+K = 4
+ALPHA = 2
+BETA = 2
+NUM_CHOICES = 10
+NAME = "SLUSH"
+NUM_ROUNDS = 5
+
+[MALICIOUS]
+PROP = 40
+LIST = [ 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0,]
